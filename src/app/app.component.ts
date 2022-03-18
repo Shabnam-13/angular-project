@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'my-app',
@@ -12,6 +13,14 @@ export class AppComponent {
   public text: string = '';
 
   constructor() {
-    this.names.push('Dune','To Kill A Mockingbird','The Great Gatsby','Don Quixote','Of Mice And Men');
+    this.names.push(
+      'Dune',
+      'To Kill A Mockingbird',
+      'The Great Gatsby',
+      'Don Quixote',
+      'Of Mice And Men'
+    );
   }
+
+  faCoffee = faCoffee;
 }

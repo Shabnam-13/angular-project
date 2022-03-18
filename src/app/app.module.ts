@@ -8,10 +8,11 @@ import {
   FontAwesomeModule,
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
+import { BookListComponent } from './book-list/book-list.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, FontAwesomeModule],
-  declarations: [AppComponent, HelloComponent],
+  declarations: [AppComponent, HelloComponent, BookListComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {

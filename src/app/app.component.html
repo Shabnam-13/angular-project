@@ -1,0 +1,13 @@
+<hello name="{{ name }}"></hello>
+
+<ol class="list-group list-group-numbered">
+  <li
+    *ngFor="let name of names"
+    class="list-group-item d-flex justify-content-between align-items-start"
+  >
+    <div class="ms-2 me-auto">
+      {{ name }}
+    </div>
+    <span class="badge bg-danger rounded-pill">x</span>
+  </li>
+</ol>

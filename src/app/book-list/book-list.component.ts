@@ -27,13 +27,14 @@ export class BookListComponent implements OnInit {
       return;
     }
     this.names.push(this.bookName);
-    this.bookName = '';
     this.bookAdded.emit(this.bookName);
+    this.bookName = '';
   }
 
   deleteBook(index: number): void {
     let deletedNames = this.names.splice(index, 1);
-    console.log(deletedNames);
+    this.bookDeleted.emit(deletedNames[0]);
+    // console.log(deletedNames);
   }
 
   ngOnInit() {}

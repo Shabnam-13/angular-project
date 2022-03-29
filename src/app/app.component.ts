@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NotifierService } from 'angular-notifier/lib/services/notifier.service';
 
 @Component({
   selector: 'my-app',
@@ -6,7 +7,13 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  bookAdd(): void {
-    console.log('book added');
+  // constructor(private notifierServices: NotifierService) {}
+
+  bookAdd(bookName: string): void {
+    console.log(bookName + ' added');
+    // this.notifierServices.notify('success', bookName + ' added');
+  }
+  bookDelete(bookName: string): void {
+    console.log(bookName + ' deleted');
   }
 }

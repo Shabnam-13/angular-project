@@ -32,7 +32,7 @@ export class BookListComponent implements OnInit {
       'Of Mice And Men'
     );
 
-    el.nativeElement.style.backgroundColor = 'yellow';
+    // el.nativeElement.style.backgroundColor = 'yellow';
   }
 
   addBook(): void {

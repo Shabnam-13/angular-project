@@ -27,8 +27,6 @@ export class BookListComponent implements OnInit {
       'Don Quixote',
       'Of Mice And Men'
     );
-
-    // el.nativeElement.style.backgroundColor = 'yellow';
   }
 
   addBook(): void {

@@ -1,9 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  Directive,
+  ElementRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css', '../app.component.css'],
+})
+@Directive({
+  selector: '[appHighlight]',
 })
 export class BookListComponent implements OnInit {
   @Input() name: string;
@@ -12,7 +23,7 @@ export class BookListComponent implements OnInit {
   @Output() bookAdded: EventEmitter<string> = new EventEmitter<string>();
   @Output() bookDeleted: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() {
+  constructor(el: ElementRef) {
     this.names.push(
       'Dune',
       'To Kill A Mockingbird',
@@ -20,6 +31,8 @@ export class BookListComponent implements OnInit {
       'Don Quixote',
       'Of Mice And Men'
     );
+
+    el.nativeElement.style.backgroundColor = 'yellow';
   }
 
   addBook(): void {

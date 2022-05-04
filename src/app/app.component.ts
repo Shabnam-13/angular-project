@@ -7,13 +7,14 @@ import { NotifierService } from 'angular-notifier/lib/services/notifier.service'
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  // constructor(private notifierServices: NotifierService) {}
+  constructor(private notifierServices: NotifierService) {}
 
   bookAdd(bookName: string): void {
     console.log(bookName + ' added');
-    // this.notifierServices.notify('success', bookName + ' added');
+    this.notifierServices.notify('success', bookName + ' added');
   }
   bookDelete(bookName: string): void {
     console.log(bookName + ' deleted');
+    this.notifierServices.notify('warning', bookName + ' deleted');
   }
 }

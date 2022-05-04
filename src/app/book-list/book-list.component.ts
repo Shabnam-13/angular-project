@@ -4,8 +4,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  Directive,
-  ElementRef,
 } from '@angular/core';
 
 @Component({
@@ -23,7 +21,7 @@ export class BookListComponent implements OnInit {
   @Output() bookAdded: EventEmitter<string> = new EventEmitter<string>();
   @Output() bookDeleted: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(el: ElementRef) {
+  constructor() {
     this.names.push(
       'Dune',
       'To Kill A Mockingbird',

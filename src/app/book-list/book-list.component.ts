@@ -11,9 +11,7 @@ import {
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css', '../app.component.css'],
 })
-@Directive({
-  selector: '[appHighlight]',
-})
+
 export class BookListComponent implements OnInit {
   @Input() name: string;
   public names: string[] = [];

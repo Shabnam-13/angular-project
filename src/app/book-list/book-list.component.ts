@@ -1,17 +1,10 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css', '../app.component.css'],
+  styleUrls: ['../app.component.css'],
 })
-
 export class BookListComponent implements OnInit {
   @Input() name: string;
   public names: string[] = [];
@@ -33,6 +26,13 @@ export class BookListComponent implements OnInit {
     if (this.bookName === '') {
       return;
     }
+
+    var arr = this.bookName.split(' ');
+    for (var i = 0; i < arr.length; i++) {
+      arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);
+    }
+    this.bookName = arr.join(' ');
+
     this.names.push(this.bookName);
     this.bookAdded.emit(this.bookName);
     this.bookName = '';
@@ -41,7 +41,6 @@ export class BookListComponent implements OnInit {
   deleteBook(index: number): void {
     let deletedNames = this.names.splice(index, 1);
     this.bookDeleted.emit(deletedNames[0]);
-    // console.log(deletedNames);
   }
 
   ngOnInit() {}

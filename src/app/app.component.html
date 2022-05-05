@@ -8,6 +8,17 @@
       ></app-book-list>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="mt-5 mb-3"><b>Products</b></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let productItem of products">
+      <app-product-item [product]="productItem"></app-product-item>
+    </div>
+  </div>
 </div>
 
 <notifier-container></notifier-container>

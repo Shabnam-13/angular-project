@@ -10,11 +10,17 @@ import { HelloComponent } from './hello.component';
 //   FaIconLibrary,
 // } from '@fortawesome/angular-fontawesome';
 import { BookListComponent } from './book-list/book-list.component';
+import { ProductItemComponent } from './components/products/product-item/product-item.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, NotifierModule],
   // imports: [BrowserModule, FormsModule, FontAwesomeModule],
-  declarations: [AppComponent, HelloComponent, BookListComponent],
+  declarations: [
+    AppComponent,
+    HelloComponent,
+    BookListComponent,
+    ProductItemComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

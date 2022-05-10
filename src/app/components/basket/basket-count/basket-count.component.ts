@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BasketService } from '../../../_services/basket.service';
 
 @Component({
   selector: 'app-basket-count',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketCountComponent implements OnInit {
   public count: number=3;
-  constructor() {}
+  constructor(private basketService:BasketService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.basketService.basketData.subscribe(
+      data=>{
+        console.log(data);
+      }
+    );
+  }
 }

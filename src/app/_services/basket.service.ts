@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { IBasket } from '../_models/basket';
 import { IProduct } from '../_models/product';
 
@@ -7,7 +8,14 @@ import { IProduct } from '../_models/product';
 })
 export class BasketService {
   constructor() {}
-  public basket: IBasket;
+  private basket: IBasket = {
+    totalCount: 0,
+    totalPrice: 0,
+    items: [],
+  };
+  public basketData: BehaviorSubject<IBasket> = new BehaviorSubject<IBasket>(
+    this.basket
+  );
   addBasketItem(product: IProduct): void {
     const findedIndex = this.basket.items.findIndex(
       (i) => i.product === product
@@ -20,19 +28,22 @@ export class BasketService {
       this.basket.totalCount++;
     } else {
       this.basket.items[findedIndex].count++;
-      this.basket.totalPrice += product.price;
     }
+    this.basket.totalPrice += product.price;
+    this.basketData.next(this.basket);
   }
 
-  removeBasketItem(prodcutId: number):void {
+  removeBasketItem(prodcutId: number): void {
     const findedIndex = this.basket.items.findIndex(
       (i) => i.product.id === prodcutId
     );
-    if (findedIndex !== -1){
-      const deletedItem = this.basket.items.splice(findedIndex,1);
+    if (findedIndex !== -1) {
+      const deletedItem = this.basket.items.splice(findedIndex, 1);
       this.basket.totalCount -= deletedItem[0].count;
-      this.basket.totalPrice -= deletedItem[0].count * deletedItem[0].product.price;
-    } 
+      this.basket.totalPrice -=
+        deletedItem[0].count * deletedItem[0].product.price;
+    }
+    this.basketData.next(this.basket);
   }
 
   updateCount(prodcutId: number, count: number) {
@@ -53,5 +64,6 @@ export class BasketService {
           (currentCount - count) * this.basket.items[findedIndex].product.price;
       }
     }
+    this.basketData.next(this.basket);
   }
 }

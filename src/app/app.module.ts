@@ -11,6 +11,8 @@ import { HelloComponent } from './hello.component';
 // } from '@fortawesome/angular-fontawesome';
 import { BookListComponent } from './book-list/book-list.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
+import { BasketCountComponent } from './components/basket/basket-count/basket-count.component';
+import { HeaderBasketComponent } from './components/basket/header-basket/header-basket.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, NotifierModule],
@@ -20,6 +22,8 @@ import { ProductItemComponent } from './components/products/product-item/product
     HelloComponent,
     BookListComponent,
     ProductItemComponent,
+    BasketCountComponent,
+    HeaderBasketComponent
   ],
   bootstrap: [AppComponent],
 })

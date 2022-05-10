@@ -3,13 +3,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-basket-count',
   templateUrl: './basket-count.component.html',
-  styleUrls: ['./basket-count.component.css']
+  styleUrls: ['../../../app.component.css'],
 })
 export class BasketCountComponent implements OnInit {
+  public count: number=3;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

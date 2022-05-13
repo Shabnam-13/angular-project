@@ -11,7 +11,13 @@ export class HeaderBasketComponent implements OnInit {
  public basket:IBasket;
   constructor(private basketService:BasketService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.basketService.basketData.subscribe(
+      data=>{
+        this.basket = data;
+      }
+    );
+  }
 
   removeItem(id:number):void{
     this.basketService.removeBasketItem(id);

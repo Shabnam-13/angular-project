@@ -7,14 +7,12 @@ import { BasketService } from '../../../_services/basket.service';
   styleUrls: ['../../../app.component.css'],
 })
 export class BasketCountComponent implements OnInit {
-  public count: number=3;
-  constructor(private basketService:BasketService) {}
+  public count: number;
+  constructor(private basketService: BasketService) {}
 
   ngOnInit() {
-    this.basketService.basketData.subscribe(
-      data=>{
-        console.log(data);
-      }
-    );
+    this.basketService.basketData.subscribe((data) => {
+      this.count = data.totalCount;
+    });
   }
 }

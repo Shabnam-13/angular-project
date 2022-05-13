@@ -25,10 +25,10 @@ export class BasketService {
         count: 1,
         product: product,
       });
-      this.basket.totalCount++;
     } else {
       this.basket.items[findedIndex].count++;
     }
+    this.basket.totalCount++;
     this.basket.totalPrice += product.price;
     this.basketData.next(this.basket);
   }

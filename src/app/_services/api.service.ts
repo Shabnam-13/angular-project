@@ -5,7 +5,9 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { IComment } from '../_models/comment';
 import { IPost } from '../_models/post';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ApiService {
   constructor(private http: HttpClient) {}
 

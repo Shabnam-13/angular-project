@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.body }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="media" *ngFor="let comment of comments">
+        <div class="media-body">
+          <h5 class="mt-0">{{ comment.email }}</h5>
+          {{ comment.body }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

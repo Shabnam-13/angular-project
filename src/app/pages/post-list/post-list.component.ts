@@ -10,19 +10,15 @@ import { ApiService } from '../../_services/api.service';
 })
 export class PostListComponent implements OnInit {
   public posts: IPost[];
-  constructor(private apiService: ApiService) {
-    this.apiService.getPosts().subscribe(
-      (data) => {
-        this.posts = data;
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        console.log('Finished');
-      }
-    );
-  }
+  constructor(private apiService: ApiService ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const myObserver = {
+      next: (data: IPost[]) => this.posts = data,
+      error: (err: Error) => console.error(err),
+      complete: () => console.log('Observer got a complete notification'),
+    };
+    
+    this.apiService.getPosts().subscribe(myObserver);
+  }
 }

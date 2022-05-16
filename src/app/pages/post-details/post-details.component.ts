@@ -1,4 +1,3 @@
-import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IComment } from '../../_models/comment';
@@ -16,22 +15,21 @@ export class PostDetailsComponent implements OnInit {
   public commments: IComment[];
   constructor(private route: ActivatedRoute, private apiService: ApiService) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.getPost();
-    this.getComments();
+    const myObserver = {
+      next: (data: IPost) => (this.post = data),
+      error: (err: Error) => console.error(err),
+    };
+    this.getPost(myObserver);
+    this.getComments(myObserver);
   }
 
   ngOnInit() {}
 
-  getPost(): void {
-    this.apiService.getPostById(this.id).subscribe((data) => {
-      this.post = data;
-    });
+  getPost(myObserver): void {
+    this.apiService.getPostById(this.id).subscribe(myObserver);
   }
 
-  getComments(): void {
-    this.apiService.getPostCommentsById(this.id).subscribe((data) => {
-      this.commments = data;
-    });
+  getComments(myObserver): void {
+    this.apiService.getPostCommentsById(this.id).subscribe(myObserver);
   }
 }

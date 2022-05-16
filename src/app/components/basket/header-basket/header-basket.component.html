@@ -23,7 +23,7 @@
             <div class="row">{{ item.product.name }}</div>
           </div>
           <div class="col">
-            {{ item.count }} - &euro; {{ item.product.price }}
+            {{ item.count }} - &euro; {{ item.product.price * item.count }}
             <span
               class="close btn btn-danger"
               (click)="removeItem(item.product.id)"

@@ -23,7 +23,8 @@ import { HeaderBasketComponent } from './components/basket/header-basket/header-
     BookListComponent,
     ProductItemComponent,
     BasketCountComponent,
-    HeaderBasketComponent
+    HeaderBasketComponent,
+    
   ],
   bootstrap: [AppComponent],
 })

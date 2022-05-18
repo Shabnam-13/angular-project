@@ -7,16 +7,22 @@ import { ApiService } from '../../_services/api.service';
 @Component({
   selector: 'app-post-details',
   templateUrl: './post-details.component.html',
-  styleUrls: ['./post-details.component.css'],
+  // styleUrls: ['./post-details.component.css'],
 })
 export class PostDetailsComponent implements OnInit {
-  public id: number;
-  public post: IPost;
-  public commments: IComment[];
+  public id: number = 0;
+  public commments: IComment[] = [];
+  public post: IPost = {
+    title: '',
+    body: '',
+    comments: this.commments,
+    userId: this.id,
+    id: 0,
+  };
   constructor(private route: ActivatedRoute, private apiService: ApiService) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     const myObserver = {
-      next: (data: IPost) => (this.post = data),
+      next: (data: IPost) => ((this.post = data), console.log(data)),
       error: (err: Error) => console.error(err),
     };
     this.getPost(myObserver);

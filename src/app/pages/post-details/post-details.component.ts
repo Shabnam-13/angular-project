@@ -11,22 +11,28 @@ import { ApiService } from '../../_services/api.service';
 })
 export class PostDetailsComponent implements OnInit {
   public id: number = 0;
-  public commments: IComment[] = [];
+  public comments: IComment[];
   public post: IPost = {
     title: '',
     body: '',
-    comments: this.commments,
+    comments: [],
     userId: this.id,
     id: 0,
   };
   constructor(private route: ActivatedRoute, private apiService: ApiService) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     const myObserver = {
-      next: (data: IPost) => ((this.post = data), console.log(data)),
+      next: (data: IPost) => (this.post = data),
       error: (err: Error) => console.error(err),
     };
+
+    const myComments = {
+      next: (data: IComment[]) => ((this.comments = data), console.log(data)),
+      error: (err: Error) => console.error(err),
+    };
+
     this.getPost(myObserver);
-    this.getComments(myObserver);
+    this.getComments(myComments);
   }
 
   ngOnInit() {}
@@ -35,7 +41,7 @@ export class PostDetailsComponent implements OnInit {
     this.apiService.getPostById(this.id).subscribe(myObserver);
   }
 
-  getComments(myObserver): void {
-    this.apiService.getPostCommentsById(this.id).subscribe(myObserver);
+  getComments(myComments): void {
+    this.apiService.getPostCommentsById(this.id).subscribe(myComments);
   }
 }

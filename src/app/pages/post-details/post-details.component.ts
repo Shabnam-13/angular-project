@@ -27,12 +27,13 @@ export class PostDetailsComponent implements OnInit {
     };
 
     const myComments = {
-      next: (data: IComment[]) => ((this.comments = data), console.log(data)),
+      next: (data: IComment[]) => (this.comments = data),
       error: (err: Error) => console.error(err),
     };
 
-    this.getPost(myObserver);
     this.getComments(myComments);
+
+    this.getPost(myObserver);
   }
 
   ngOnInit() {}

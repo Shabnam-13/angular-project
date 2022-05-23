@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 mb-3 mt-3">
       <h1>{{ post.title }}</h1>
       <p>{{ post.body }}</p>
     </div>
@@ -8,9 +8,9 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="media" *ngFor="let item of comments">
-        <div class="media-body">
-          <h5 class="mt-0">{{ item.email }}</h5>
-          {{ item.body }}
+        <div class="media-body pb-3" style="padding-left:3rem">
+          <h5>{{ item.email }}</h5>
+          <span>{{ item.body }}</span>
         </div>
       </div>
     </div>
